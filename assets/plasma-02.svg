@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <radialGradient id="silver" cx="74%" cy="30%" r="92%">
+      <stop offset="0" stop-color="#b5b5b5"/>
+      <stop offset=".42" stop-color="#8d8d8d"/>
+      <stop offset="1" stop-color="#555"/>
+    </radialGradient>
+    <radialGradient id="mist" cx="18%" cy="80%" r="68%">
+      <stop offset="0" stop-color="#c4c4c4" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#c4c4c4" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".015" numOctaves="3" seed="23" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="gray-noise"/>
+      <feComponentTransfer in="gray-noise" result="texture"><feFuncA type="table" tableValues="0 .1"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="texture" mode="soft-light"/>
+    </filter>
+  </defs>
+  <g filter="url(#grain)">
+    <rect width="1200" height="800" fill="url(#silver)"/>
+    <rect width="1200" height="800" fill="url(#mist)"/>
+  </g>
+</svg>

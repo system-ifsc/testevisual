@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <radialGradient id="graphite" cx="28%" cy="68%" r="88%">
+      <stop offset="0" stop-color="#b0b0b0"/>
+      <stop offset=".46" stop-color="#858585"/>
+      <stop offset="1" stop-color="#505050"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="82%" cy="18%" r="64%">
+      <stop offset="0" stop-color="#d0d0d0" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#d0d0d0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".01" numOctaves="3" seed="41" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="gray-noise"/>
+      <feComponentTransfer in="gray-noise" result="texture"><feFuncA type="table" tableValues="0 .11"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="texture" mode="soft-light"/>
+    </filter>
+  </defs>
+  <g filter="url(#grain)">
+    <rect width="1200" height="800" fill="url(#graphite)"/>
+    <rect width="1200" height="800" fill="url(#glow)"/>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <radialGradient id="ash" cx="34%" cy="28%" r="92%">
+      <stop offset="0" stop-color="#aaa"/>
+      <stop offset=".48" stop-color="#888"/>
+      <stop offset="1" stop-color="#656565"/>
+    </radialGradient>
+    <radialGradient id="soft-light" cx="75%" cy="72%" r="65%">
+      <stop offset="0" stop-color="#bdbdbd" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#bdbdbd" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft-grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="3" seed="14" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="gray-noise"/>
+      <feComponentTransfer in="gray-noise" result="grain">
+        <feFuncA type="table" tableValues="0 .12"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="grain" mode="soft-light"/>
+    </filter>
+  </defs>
+  <g filter="url(#soft-grain)">
+    <rect width="1200" height="800" fill="url(#ash)"/>
+    <rect width="1200" height="800" fill="url(#soft-light)"/>
+  </g>
+</svg>
